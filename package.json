@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build"
+  },
+  "devDependencies": {
+    "@umijs/preset-react": "^1.6.4",
+    "umi": "^3.2.17"
+  }
+}
