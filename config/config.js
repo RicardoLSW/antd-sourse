@@ -3,16 +3,22 @@ export default {
   antd: {},
   routes: [
     {
-      path: '/',
-      component: './Card'
-    },
-    {
-      path: '/tabs-demo',
-      component: './TabsDemo'
-    },
-    {
-      path: '/tree-demo',
-      component: './TreeDemo'
+      path: "/",
+      component: "../layout",
+      routes: [
+        {
+          path: "card-demo",
+          component: "./CardDemo"
+        },
+        {
+          path: "tabs-demo",
+          component: "./TabsDemo"
+        },
+        {
+          path: "tree-demo",
+          component: "./TreeDemo"
+        }
+      ]
     }
   ]
 };
