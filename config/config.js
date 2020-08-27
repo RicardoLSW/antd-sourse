@@ -1,6 +1,7 @@
 export default {
   singular: true,
   antd: {},
+  dva: {},
   routes: [
     {
       path: "/",
@@ -25,6 +26,10 @@ export default {
         {
           path: "/tree-demo",
           component: "./TreeDemo"
+        },
+        {
+          path: "/puzzle-cards",
+          component: "./PuzzleCards"
         }
       ]
     }
