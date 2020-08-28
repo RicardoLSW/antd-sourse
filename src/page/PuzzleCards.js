@@ -13,9 +13,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClickAdd: newCard => {
+    onDidMount: newCard => {
       const action = {
-        type: `${namespace}/addNewCard`,
+        type: `${namespace}/queryInitCards`,
         payload: newCard
       };
       dispatch(action);
@@ -25,6 +25,10 @@ const mapDispatchToProps = dispatch => {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class PuzzleCards extends Component {
+  componentDidMount() {
+    this.props.onDidMount();
+  }
+
   render() {
     return (
       <div>
@@ -38,19 +42,19 @@ export default class PuzzleCards extends Component {
             </Card>
           );
         })}
-        <div>
-          <Button
-            onClick={() =>
-              this.props.onClickAdd({
-                setup:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                punchline: "here we use dva"
-              })
-            }
-          >
-            添加卡片
-          </Button>
-        </div>
+        {/*<div>*/}
+        {/*  <Button*/}
+        {/*    onClick={() =>*/}
+        {/*      this.props.onClickAdd({*/}
+        {/*        setup:*/}
+        {/*          "Lorem ipsum dolor sit amet, consectetur adipiscing elit",*/}
+        {/*        punchline: "here we use dva"*/}
+        {/*      })*/}
+        {/*    }*/}
+        {/*  >*/}
+        {/*    添加卡片*/}
+        {/*  </Button>*/}
+        {/*</div>*/}
       </div>
     );
   }

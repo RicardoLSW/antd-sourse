@@ -1,19 +1,37 @@
+import request from "../util/request";
+
+const delay = (millisecond) => {
+  return new Promise((resolve => {
+    setTimeout(resolve, millisecond);
+  }))
+}
+
+const getPuzzle = (puzzle) => {
+  return puzzle;
+}
+
 export default {
   namespace: "puzzleCards",
   state: {
-    data: [
-      {
-        id: 1,
-        setup: "Did you hear about the two silk worms in a race?",
-        punchline: "It ended in a tie"
-      },
-      {
-        id: 2,
-        setup: "What happens to a frog's car when it breaks down?",
-        punchline: "It gets toad away"
-      }
-    ],
-    counter: 100
+    data: [],
+    counter: 0,
+  },
+  effects: {
+    *queryInitCards(_, sagaEffects) {
+      const { call, put } = sagaEffects;
+      const endPointUrl = {
+        setup:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        punchline: "here we use dva"
+      };
+      const puzzle = yield call(getPuzzle, endPointUrl);
+      yield put({type: 'addNewCard', payload: puzzle});
+
+      yield call(delay, 3000);
+
+      const puzzle2 = yield call(getPuzzle, endPointUrl);
+      yield put({type: 'addNewCard', payload: puzzle2});
+    }
   },
   reducers: {
     addNewCard(state, { payload: newCard }) {
