@@ -19,17 +19,13 @@ export default {
   effects: {
     *queryInitCards(_, sagaEffects) {
       const { call, put } = sagaEffects;
-      const endPointUrl = {
-        setup:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        punchline: "here we use dva"
-      };
-      const puzzle = yield call(getPuzzle, endPointUrl);
+      const endPointURI = '/dev/random_joke';
+      const puzzle = yield call(request, endPointURI);
       yield put({type: 'addNewCard', payload: puzzle});
 
       yield call(delay, 3000);
 
-      const puzzle2 = yield call(getPuzzle, endPointUrl);
+      const puzzle2 = yield call(request, endPointURI);
       yield put({type: 'addNewCard', payload: puzzle2});
     }
   },
